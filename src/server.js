@@ -451,11 +451,16 @@ app.post('/api/reset', (req, res) => {
   }
 });
 
-// Start the HTTP listener
-app.listen(PORT, () => {
-  console.log(`==================================================`);
-  console.log(` EcoPulse Server running at http://localhost:${PORT}`);
-  console.log(` Server mode: Production Ready`);
-  console.log(` Static folder path: public/`);
-  console.log(`==================================================`);
-});
+// Start the HTTP listener only if not run in a serverless environment (like Vercel)
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`==================================================`);
+    console.log(` EcoPulse Server running at http://localhost:${PORT}`);
+    console.log(` Server mode: Production Ready`);
+    console.log(` Static folder path: public/`);
+    console.log(`==================================================`);
+  });
+}
+
+module.exports = app;
+
