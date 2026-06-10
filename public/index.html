@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPulse - Personal Carbon Intelligence Platform</title>
+  <meta name="description" content="AI-powered carbon tracking and intelligence dashboard for personal sustainability.">
+  
+  <!-- Fonts: Outfit for headers/numbers, Inter for details -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <!-- Background Ambient Lights -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <!-- ========================================== -->
+    <!-- SECTION 1: ONBOARDING QUIZ -->
+    <!-- ========================================== -->
+    <section id="onboarding-screen" class="screen active">
+      <div class="card glass-card onboarding-card">
+        <div class="onboarding-header">
+          <div class="logo">
+            <span class="pulse-icon"><i class="fa-solid fa-leaf"></i></span>
+            <h1>Eco<span>Pulse</span></h1>
+          </div>
+          <p class="subtitle">AI-Powered Carbon Intelligence</p>
+          <div class="progress-bar-container">
+            <div class="progress-steps">
+              <span class="step-dot active" data-step="1"></span>
+              <span class="step-dot" data-step="2"></span>
+              <span class="step-dot" data-step="3"></span>
+              <span class="step-dot" data-step="4"></span>
+              <span class="step-dot" data-step="5"></span>
+            </div>
+            <div class="progress-bar-fill" id="quiz-progress" style="width: 20%;"></div>
+          </div>
+        </div>
+
+        <form id="onboarding-form" onsubmit="event.preventDefault();">
+          
+          <!-- Step 1: Welcome & Transportation Mode -->
+          <div class="quiz-step active" data-step="1">
+            <h2>Let's establish your baseline commute</h2>
+            <p class="step-desc">How do you primarily get around each week?</p>
+            
+            <div class="custom-radio-group">
+              <label class="custom-radio">
+                <input type="radio" name="commuteMode" value="suv" required checked>
+                <div class="radio-content">
+                  <i class="fa-solid fa-truck-pickup"></i>
+                  <span>SUV / Truck</span>
+                  <small>Gasoline/Diesel SUV</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="commuteMode" value="sedan">
+                <div class="radio-content">
+                  <i class="fa-solid fa-car"></i>
+                  <span>Sedan / Hatch</span>
+                  <small>Standard Gasoline</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="commuteMode" value="hybrid">
+                <div class="radio-content">
+                  <i class="fa-solid fa-car-side"></i>
+                  <span>Hybrid</span>
+                  <small>Gas-Electric Engine</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="commuteMode" value="ev">
+                <div class="radio-content">
+                  <i class="fa-solid fa-bolt"></i>
+                  <span>Electric (EV)</span>
+                  <small>Zero-tailpipe emissions</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="commuteMode" value="transit">
+                <div class="radio-content">
+                  <i class="fa-solid fa-bus"></i>
+                  <span>Public Transit</span>
+                  <small>Bus / Subway / Train</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="commuteMode" value="active">
+                <div class="radio-content">
+                  <i class="fa-solid fa-bicycle"></i>
+                  <span>Active Transit</span>
+                  <small>Walk / Cycle / Kick</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Commute Distance -->
+          <div class="quiz-step" data-step="2">
+            <h2>Weekly commute distance</h2>
+            <p class="step-desc">Approximately how many kilometers do you travel in a typical week using your selected mode?</p>
+            
+            <div class="slider-container">
+              <div class="slider-value-bubble"><span id="distance-val">60</span> km</div>
+              <input type="range" name="commuteDistance" id="distance-slider" min="0" max="500" value="60" class="gradient-slider">
+              <div class="slider-labels">
+                <span>0 km</span>
+                <span>250 km</span>
+                <span>500+ km</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Diet & Food Habits -->
+          <div class="quiz-step" data-step="3">
+            <h2>Your dietary profile</h2>
+            <p class="step-desc">Which profile best represents your eating habits?</p>
+            
+            <div class="custom-radio-group grid-2">
+              <label class="custom-radio">
+                <input type="radio" name="diet" value="heavy_meat" required>
+                <div class="radio-content">
+                  <i class="fa-solid fa-drumstick-bite"></i>
+                  <span>Frequent Red Meat</span>
+                  <small>Beef, lamb, pork daily</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="diet" value="average_meat" checked>
+                <div class="radio-content">
+                  <i class="fa-solid fa-burger"></i>
+                  <span>Moderate Meat</span>
+                  <small>Poultry, fish, mixed meals</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="diet" value="vegetarian">
+                <div class="radio-content">
+                  <i class="fa-solid fa-cheese"></i>
+                  <span>Vegetarian</span>
+                  <small>Dairy & eggs, no meat</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="diet" value="vegan">
+                <div class="radio-content">
+                  <i class="fa-solid fa-seedling"></i>
+                  <span>Vegan</span>
+                  <small>100% plant-based diet</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Household Energy Utilities -->
+          <div class="quiz-step" data-step="4">
+            <h2>Household utilities</h2>
+            <p class="step-desc">Help us estimate your household energy impact.</p>
+            
+            <div class="form-grid">
+              <div class="input-group">
+                <label for="electricityBill"><i class="fa-solid fa-lightbulb"></i> Est. Monthly Electricity Bill ($)</label>
+                <input type="number" name="electricityBill" id="electricityBill" min="0" value="80" placeholder="e.g. 100">
+              </div>
+              
+              <div class="input-group">
+                <label for="heatingGas"><i class="fa-solid fa-fire"></i> Est. Monthly Natural Gas Bill ($)</label>
+                <input type="number" name="heatingGas" id="heatingGas" min="0" value="40" placeholder="e.g. 50">
+              </div>
+
+              <div class="input-group full-width">
+                <label for="householdSize"><i class="fa-solid fa-people-roof"></i> Household Occupants (to split bill carbon)</label>
+                <div class="number-stepper">
+                  <button type="button" class="step-btn" onclick="stepDown('householdSize')">-</button>
+                  <input type="number" name="householdSize" id="householdSize" min="1" max="10" value="2" readonly>
+                  <button type="button" class="step-btn" onclick="stepUp('householdSize')">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Retail Shopping Habits -->
+          <div class="quiz-step" data-step="5">
+            <h2>Consumer profile</h2>
+            <p class="step-desc">How would you describe your typical shopping and retail consumption habits?</p>
+            
+            <div class="custom-radio-group">
+              <label class="custom-radio">
+                <input type="radio" name="shopping" value="high" required>
+                <div class="radio-content">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span>Frequent Shopper</span>
+                  <small>Buy new clothing, electronics, products monthly</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="shopping" value="medium" checked>
+                <div class="radio-content">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>Standard Consumer</span>
+                  <small>Buy goods occasionally, replace only when needed</small>
+                </div>
+              </label>
+              
+              <label class="custom-radio">
+                <input type="radio" name="shopping" value="low">
+                <div class="radio-content">
+                  <i class="fa-solid fa-recycle"></i>
+                  <span>Conscious / Minimalist</span>
+                  <small>Mainly secondhand, repair products, zero fast-fashion</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="quiz-navigation">
+            <button type="button" id="prev-btn" class="btn btn-secondary disabled" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <button type="button" id="next-btn" class="btn btn-primary" onclick="nextStep()">Next <i class="fa-solid fa-arrow-right"></i></button>
+            <button type="button" id="submit-btn" class="btn btn-primary btn-glowing hide" onclick="submitOnboarding()">Calculate Impact <i class="fa-solid fa-square-poll-vertical"></i></button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: ECOPULSE DASHBOARD -->
+    <!-- ========================================== -->
+    <section id="dashboard-screen" class="screen">
+      
+      <!-- Top Navigation bar -->
+      <header class="dashboard-header glass-card">
+        <div class="logo">
+          <span class="pulse-icon"><i class="fa-solid fa-leaf"></i></span>
+          <h1>Eco<span>Pulse</span></h1>
+        </div>
+        
+        <div class="header-right">
+          <!-- Streak Badge -->
+          <div class="streak-badge" title="Daily streak of sustainable behavior">
+            <i class="fa-solid fa-fire fire-pulse"></i>
+            <span id="streak-count">0</span> Days
+          </div>
+          
+          <button class="btn btn-icon" onclick="resetApp()" title="Reset Profile & Retake Quiz">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Grid Layout -->
+      <div class="dashboard-grid">
+        
+        <!-- Left Side: Carbon Score Circle & Badges -->
+        <div class="grid-left">
+          
+          <!-- Card 1: The EcoPulse Gauge -->
+          <div class="card glass-card gauge-card">
+            <h3>EcoPulse Score</h3>
+            
+            <div class="gauge-container">
+              <!-- SVG Radial Gauge -->
+              <svg viewBox="0 0 200 200" class="gauge-svg">
+                <!-- Background track -->
+                <circle cx="100" cy="100" r="80" class="gauge-track"></circle>
+                <!-- Glowing foreground bar -->
+                <circle cx="100" cy="100" r="80" class="gauge-fill" id="gauge-bar" stroke-dasharray="502" stroke-dashoffset="250"></circle>
+              </svg>
+              
+              <div class="gauge-overlay">
+                <span class="score-label">EcoScore</span>
+                <span class="score-number" id="dashboard-score">--</span>
+                <span class="emissions-subtext"><b id="dashboard-emissions">--</b> kg CO₂/day</span>
+              </div>
+            </div>
+            
+            <div class="gauge-footer">
+              <div class="target-allowance">
+                <span>Daily Budget Limit</span>
+                <strong>15.00 kg CO₂e</strong>
+              </div>
+              <div class="divider"></div>
+              <div class="status-indicator low" id="budget-status">
+                <i class="fa-solid fa-circle-check"></i> On-Track
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 2: Badges / Achievements -->
+          <div class="card glass-card achievements-card">
+            <h3>Unlocked Eco-Badges</h3>
+            <div class="badges-row" id="badges-container">
+              <!-- Dynamically populated badges -->
+              <div class="badge-item locked" id="badge-baseline">
+                <div class="badge-icon"><i class="fa-solid fa-seedling"></i></div>
+                <span>Green Onboard</span>
+              </div>
+              <div class="badge-item locked" id="badge-streak-3">
+                <div class="badge-icon"><i class="fa-solid fa-award"></i></div>
+                <span>Green Recruit</span>
+              </div>
+              <div class="badge-item locked" id="badge-streak-5">
+                <div class="badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <span>Eco Warrior</span>
+              </div>
+              <div class="badge-item locked" id="badge-saving">
+                <div class="badge-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                <span>Carbon Saver</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Right Side: Heatmap, Quick Logger, AI Coach -->
+        <div class="grid-right">
+          
+          <!-- Card 3: Sector Impact Heatmap -->
+          <div class="card glass-card heatmap-card">
+            <h3>Emissions Breakdown by Sector</h3>
+            <div class="heatmap-container" id="heatmap-list">
+              
+              <!-- Sector Row: Transport -->
+              <div class="sector-row">
+                <div class="sector-header">
+                  <span><i class="fa-solid fa-car sector-icon transport"></i> Transportation</span>
+                  <span class="sector-value"><b id="heat-val-transport">0.00</b> kg CO₂</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill transport" id="heat-bar-transport" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <!-- Sector Row: Diet -->
+              <div class="sector-row">
+                <div class="sector-header">
+                  <span><i class="fa-solid fa-utensils sector-icon diet"></i> Diet & Food</span>
+                  <span class="sector-value"><b id="heat-val-diet">0.00</b> kg CO₂</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill diet" id="heat-bar-diet" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <!-- Sector Row: Energy -->
+              <div class="sector-row">
+                <div class="sector-header">
+                  <span><i class="fa-solid fa-plug sector-icon energy"></i> Home Energy</span>
+                  <span class="sector-value"><b id="heat-val-energy">0.00</b> kg CO₂</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill energy" id="heat-bar-energy" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <!-- Sector Row: Shopping -->
+              <div class="sector-row">
+                <div class="sector-header">
+                  <span><i class="fa-solid fa-bag-shopping sector-icon shopping"></i> Shopping & Retail</span>
+                  <span class="sector-value"><b id="heat-val-shopping">0.00</b> kg CO₂</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill shopping" id="heat-bar-shopping" style="width: 0%;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- Card 4: LLM AI Coach Widget -->
+          <div class="card glass-card coach-card">
+            <div class="coach-header">
+              <h3><i class="fa-solid fa-wand-magic-sparkles"></i> AI Sustainability Coach</h3>
+              <button class="btn btn-sm btn-secondary" onclick="fetchAICoachTip()" id="refresh-coach-btn" title="Ask AI Coach for new insights">
+                <i class="fa-solid fa-rotate"></i> Recalculate
+              </button>
+            </div>
+            
+            <div class="coach-content">
+              <!-- Loading Spinner -->
+              <div class="coach-loading hide" id="coach-loader">
+                <div class="spinner"></div>
+                <span>Gemini Coach analyzing footprint trends...</span>
+              </div>
+              <!-- Text Container -->
+              <p class="coach-tip" id="coach-text">
+                "Hi there! Complete onboarding and sync your database logs to unlock your personalized generative environmental advice."
+              </p>
+            </div>
+            <div class="coach-badge-sub">
+              <span>Powered by <i class="fa-solid fa-bolt"></i> Google Gemini 1.5 Flash</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Quick Activity Logger -->
+          <div class="card glass-card logger-card">
+            <h3>Record Daily Emissions Activity</h3>
+            
+            <div class="logger-tabs">
+              <button class="tab-btn active" data-tab="log-transport" onclick="switchLogTab('log-transport')"><i class="fa-solid fa-car"></i> Transit</button>
+              <button class="tab-btn" data-tab="log-diet" onclick="switchLogTab('log-diet')"><i class="fa-solid fa-utensils"></i> Food</button>
+              <button class="tab-btn" data-tab="log-energy" onclick="switchLogTab('log-energy')"><i class="fa-solid fa-plug"></i> Savings</button>
+              <button class="tab-btn" data-tab="log-shopping" onclick="switchLogTab('log-shopping')"><i class="fa-solid fa-bag-shopping"></i> Shopping</button>
+            </div>
+
+            <!-- Tab 1: Transport Logging -->
+            <div class="logger-tab-content active" id="log-transport">
+              <form class="log-form" onsubmit="submitActivity(event, 'transport')">
+                <div class="form-row">
+                  <div class="input-group">
+                    <label for="log-transit-mode">Commute Mode</label>
+                    <select id="log-transit-mode" required>
+                      <option value="suv">SUV / Truck</option>
+                      <option value="sedan">Sedan / Hatchback</option>
+                      <option value="hybrid">Hybrid</option>
+                      <option value="ev">Electric Vehicle (EV)</option>
+                      <option value="transit">Public Transit (Bus/Train)</option>
+                      <option value="active">Active (Walk / Cycle)</option>
+                    </select>
+                  </div>
+                  
+                  <div class="input-group">
+                    <label for="log-transit-km">Distance Traveled (km)</label>
+                    <input type="number" id="log-transit-km" min="1" value="15" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log Commute <i class="fa-solid fa-plus"></i></button>
+              </form>
+            </div>
+
+            <!-- Tab 2: Diet Logging -->
+            <div class="logger-tab-content" id="log-diet">
+              <form class="log-form" onsubmit="submitActivity(event, 'diet')">
+                <div class="input-group">
+                  <label for="log-diet-profile">Diet Profile Today</label>
+                  <select id="log-diet-profile" required>
+                    <option value="heavy_meat">Frequent Red Meat (Beef, pork daily)</option>
+                    <option value="average_meat">Moderate Meat (Mixed meat/poultry)</option>
+                    <option value="vegetarian">Vegetarian (No meat, has dairy/eggs)</option>
+                    <option value="vegan">Vegan (100% plant-based)</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log Diet Day <i class="fa-solid fa-plus"></i></button>
+              </form>
+            </div>
+
+            <!-- Tab 3: Energy Savings Logging -->
+            <div class="logger-tab-content" id="log-energy">
+              <form class="log-form" onsubmit="submitActivity(event, 'energy')">
+                <div class="input-group">
+                  <label for="log-energy-saved">Electricity Saved Today (kWh)</label>
+                  <input type="number" id="log-energy-saved" min="1" step="0.5" value="5" required>
+                  <small class="input-help">e.g. Turning off standby power, using clothesline, washing cold.</small>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log Savings <i class="fa-solid fa-plus"></i></button>
+              </form>
+            </div>
+
+            <!-- Tab 4: Shopping Logging -->
+            <div class="logger-tab-content" id="log-shopping">
+              <form class="log-form" onsubmit="submitActivity(event, 'shopping')">
+                <div class="input-group">
+                  <label for="log-shopping-level">Shopping Behavior Today</label>
+                  <select id="log-shopping-level" required>
+                    <option value="high">Frequent Retail (Buying non-essentials/electronics)</option>
+                    <option value="medium">Standard Retail (Basic items only)</option>
+                    <option value="low">Eco/Minimalist (Secondhand, essentials, zero waste)</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log Shopping Day <i class="fa-solid fa-plus"></i></button>
+              </form>
+            </div>
+            
+          </div>
+
+        </div>
+        
+      </div>
+
+      <!-- Historical Chart Section (Full Width Card) -->
+      <div class="card glass-card chart-card">
+        <h3>Carbon Footprint Trends (Last 7 Days)</h3>
+        <p class="chart-subtitle">Comparing daily emissions against your initial onboarding baseline.</p>
+        
+        <div class="chart-container">
+          <!-- Custom Vector SVG Chart for maximum responsiveness and high-fidelity -->
+          <svg viewBox="0 0 800 250" class="trend-chart-svg" id="trend-chart">
+            <!-- Grid Lines -->
+            <line x1="50" y1="200" x2="750" y2="200" class="chart-grid-line"></line>
+            <line x1="50" y1="140" x2="750" y2="140" class="chart-grid-line"></line>
+            <line x1="50" y1="80" x2="750" y2="80" class="chart-grid-line"></line>
+            <line x1="50" y1="20" x2="750" y2="20" class="chart-grid-line"></line>
+
+            <!-- Baseline Threshold Line -->
+            <line x1="50" y1="120" x2="750" y2="120" class="chart-baseline-line" id="chart-baseline-line" stroke-dasharray="6,4"></line>
+
+            <!-- Chart Columns or Line Graph (Rendered Dynamically via JS) -->
+            <g id="chart-bars"></g>
+            
+            <!-- X Axis Labels (Dates) -->
+            <g id="chart-labels"></g>
+
+            <!-- Legend -->
+            <g class="chart-legend" transform="translate(620, 10)">
+              <rect x="0" y="0" width="12" height="12" fill="#10B981" rx="2"></rect>
+              <text x="18" y="10" fill="#9CA3AF" font-size="11">Your Footprint</text>
+              
+              <line x1="0" y1="22" x2="15" y2="22" stroke="#F87171" stroke-width="2" stroke-dasharray="3,2"></line>
+              <text x="18" y="25" fill="#9CA3AF" font-size="11">Baseline</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Notification Banner -->
+  <div id="notification" class="notification-banner">
+    <i class="fa-solid fa-bell"></i>
+    <span id="notification-message">Activity recorded successfully!</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
