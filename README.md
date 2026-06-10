@@ -1,6 +1,9 @@
 # EcoPulse: Personal Carbon Intelligence Platform MVP
 
+**Live Vercel Link**: [https://ecopulse-xi.vercel.app](https://ecopulse-xi.vercel.app)
+
 EcoPulse is a state-of-the-art personal carbon tracking and intelligence platform designed to bridge the gap between environmental awareness and daily behavioral actions. By automating calculations, analyzing lifestyle categories, and using Google Gemini 1.5 Flash AI coaching, EcoPulse turns abstract environmental impact data into clear, actionable daily targets.
+
 
 This codebase contains the Phase 1 Minimum Viable Product (MVP) core, including:
 1. **Interactive Onboarding Quiz** to establish user baseline footprints.
