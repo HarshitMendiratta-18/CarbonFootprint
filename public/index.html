@@ -56,56 +56,56 @@
             <h2>Let's establish your baseline commute</h2>
             <p class="step-desc">How do you primarily get around each week?</p>
             
-            <div class="custom-radio-group">
-              <label class="custom-radio">
-                <input type="radio" name="commuteMode" value="suv" required checked>
+            <div class="custom-radio-group" role="radiogroup" aria-label="Primary commute mode">
+              <label class="custom-radio" for="mode-suv">
+                <input type="radio" name="commuteMode" id="mode-suv" value="suv" required checked>
                 <div class="radio-content">
-                  <i class="fa-solid fa-truck-pickup"></i>
+                  <i class="fa-solid fa-truck-pickup" aria-hidden="true"></i>
                   <span>SUV / Truck</span>
                   <small>Gasoline/Diesel SUV</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="commuteMode" value="sedan">
+              <label class="custom-radio" for="mode-sedan">
+                <input type="radio" name="commuteMode" id="mode-sedan" value="sedan">
                 <div class="radio-content">
-                  <i class="fa-solid fa-car"></i>
+                  <i class="fa-solid fa-car" aria-hidden="true"></i>
                   <span>Sedan / Hatch</span>
                   <small>Standard Gasoline</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="commuteMode" value="hybrid">
+              <label class="custom-radio" for="mode-hybrid">
+                <input type="radio" name="commuteMode" id="mode-hybrid" value="hybrid">
                 <div class="radio-content">
-                  <i class="fa-solid fa-car-side"></i>
+                  <i class="fa-solid fa-car-side" aria-hidden="true"></i>
                   <span>Hybrid</span>
                   <small>Gas-Electric Engine</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="commuteMode" value="ev">
+              <label class="custom-radio" for="mode-ev">
+                <input type="radio" name="commuteMode" id="mode-ev" value="ev">
                 <div class="radio-content">
-                  <i class="fa-solid fa-bolt"></i>
+                  <i class="fa-solid fa-bolt" aria-hidden="true"></i>
                   <span>Electric (EV)</span>
                   <small>Zero-tailpipe emissions</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="commuteMode" value="transit">
+              <label class="custom-radio" for="mode-transit">
+                <input type="radio" name="commuteMode" id="mode-transit" value="transit">
                 <div class="radio-content">
-                  <i class="fa-solid fa-bus"></i>
+                  <i class="fa-solid fa-bus" aria-hidden="true"></i>
                   <span>Public Transit</span>
                   <small>Bus / Subway / Train</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="commuteMode" value="active">
+              <label class="custom-radio" for="mode-active">
+                <input type="radio" name="commuteMode" id="mode-active" value="active">
                 <div class="radio-content">
-                  <i class="fa-solid fa-bicycle"></i>
+                  <i class="fa-solid fa-bicycle" aria-hidden="true"></i>
                   <span>Active Transit</span>
                   <small>Walk / Cycle / Kick</small>
                 </div>
@@ -119,8 +119,9 @@
             <p class="step-desc">Approximately how many kilometers do you travel in a typical week using your selected mode?</p>
             
             <div class="slider-container">
+              <label for="distance-slider" class="visually-hidden">Commute distance in kilometers</label>
               <div class="slider-value-bubble"><span id="distance-val">60</span> km</div>
-              <input type="range" name="commuteDistance" id="distance-slider" min="0" max="500" value="60" class="gradient-slider">
+              <input type="range" name="commuteDistance" id="distance-slider" min="0" max="500" value="60" class="gradient-slider" aria-valuemin="0" aria-valuemax="500" aria-valuenow="60">
               <div class="slider-labels">
                 <span>0 km</span>
                 <span>250 km</span>
@@ -134,38 +135,38 @@
             <h2>Your dietary profile</h2>
             <p class="step-desc">Which profile best represents your eating habits?</p>
             
-            <div class="custom-radio-group grid-2">
-              <label class="custom-radio">
-                <input type="radio" name="diet" value="heavy_meat" required>
+            <div class="custom-radio-group grid-2" role="radiogroup" aria-label="Dietary habits">
+              <label class="custom-radio" for="diet-heavy">
+                <input type="radio" name="diet" id="diet-heavy" value="heavy_meat" required>
                 <div class="radio-content">
-                  <i class="fa-solid fa-drumstick-bite"></i>
+                  <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
                   <span>Frequent Red Meat</span>
                   <small>Beef, lamb, pork daily</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="diet" value="average_meat" checked>
+              <label class="custom-radio" for="diet-average">
+                <input type="radio" name="diet" id="diet-average" value="average_meat" checked>
                 <div class="radio-content">
-                  <i class="fa-solid fa-burger"></i>
+                  <i class="fa-solid fa-burger" aria-hidden="true"></i>
                   <span>Moderate Meat</span>
                   <small>Poultry, fish, mixed meals</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="diet" value="vegetarian">
+              <label class="custom-radio" for="diet-vegetarian">
+                <input type="radio" name="diet" id="diet-vegetarian" value="vegetarian">
                 <div class="radio-content">
-                  <i class="fa-solid fa-cheese"></i>
+                  <i class="fa-solid fa-cheese" aria-hidden="true"></i>
                   <span>Vegetarian</span>
                   <small>Dairy & eggs, no meat</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="diet" value="vegan">
+              <label class="custom-radio" for="diet-vegan">
+                <input type="radio" name="diet" id="diet-vegan" value="vegan">
                 <div class="radio-content">
-                  <i class="fa-solid fa-seedling"></i>
+                  <i class="fa-solid fa-seedling" aria-hidden="true"></i>
                   <span>Vegan</span>
                   <small>100% plant-based diet</small>
                 </div>
@@ -180,21 +181,21 @@
             
             <div class="form-grid">
               <div class="input-group">
-                <label for="electricityBill"><i class="fa-solid fa-lightbulb"></i> Est. Monthly Electricity Bill ($)</label>
-                <input type="number" name="electricityBill" id="electricityBill" min="0" value="80" placeholder="e.g. 100">
+                <label for="electricityBill"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Est. Monthly Electricity Bill ($)</label>
+                <input type="number" name="electricityBill" id="electricityBill" min="0" value="80" placeholder="e.g. 100" aria-required="true">
               </div>
               
               <div class="input-group">
-                <label for="heatingGas"><i class="fa-solid fa-fire"></i> Est. Monthly Natural Gas Bill ($)</label>
-                <input type="number" name="heatingGas" id="heatingGas" min="0" value="40" placeholder="e.g. 50">
+                <label for="heatingGas"><i class="fa-solid fa-fire" aria-hidden="true"></i> Est. Monthly Natural Gas Bill ($)</label>
+                <input type="number" name="heatingGas" id="heatingGas" min="0" value="40" placeholder="e.g. 50" aria-required="true">
               </div>
-
+ 
               <div class="input-group full-width">
-                <label for="householdSize"><i class="fa-solid fa-people-roof"></i> Household Occupants (to split bill carbon)</label>
+                <label for="householdSize"><i class="fa-solid fa-people-roof" aria-hidden="true"></i> Household Occupants (to split bill carbon)</label>
                 <div class="number-stepper">
-                  <button type="button" class="step-btn" onclick="stepDown('householdSize')">-</button>
-                  <input type="number" name="householdSize" id="householdSize" min="1" max="10" value="2" readonly>
-                  <button type="button" class="step-btn" onclick="stepUp('householdSize')">+</button>
+                  <button type="button" class="step-btn" onclick="stepDown('householdSize')" aria-label="Decrease household size">-</button>
+                  <input type="number" name="householdSize" id="householdSize" min="1" max="10" value="2" readonly aria-label="Number of household occupants">
+                  <button type="button" class="step-btn" onclick="stepUp('householdSize')" aria-label="Increase household size">+</button>
                 </div>
               </div>
             </div>
@@ -205,29 +206,29 @@
             <h2>Consumer profile</h2>
             <p class="step-desc">How would you describe your typical shopping and retail consumption habits?</p>
             
-            <div class="custom-radio-group">
-              <label class="custom-radio">
-                <input type="radio" name="shopping" value="high" required>
+            <div class="custom-radio-group" role="radiogroup" aria-label="Shopping consumer habits">
+              <label class="custom-radio" for="shop-high">
+                <input type="radio" name="shopping" id="shop-high" value="high" required>
                 <div class="radio-content">
-                  <i class="fa-solid fa-bag-shopping"></i>
+                  <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
                   <span>Frequent Shopper</span>
                   <small>Buy new clothing, electronics, products monthly</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="shopping" value="medium" checked>
+              <label class="custom-radio" for="shop-medium">
+                <input type="radio" name="shopping" id="shop-medium" value="medium" checked>
                 <div class="radio-content">
-                  <i class="fa-solid fa-cart-shopping"></i>
+                  <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                   <span>Standard Consumer</span>
                   <small>Buy goods occasionally, replace only when needed</small>
                 </div>
               </label>
               
-              <label class="custom-radio">
-                <input type="radio" name="shopping" value="low">
+              <label class="custom-radio" for="shop-low">
+                <input type="radio" name="shopping" id="shop-low" value="low">
                 <div class="radio-content">
-                  <i class="fa-solid fa-recycle"></i>
+                  <i class="fa-solid fa-recycle" aria-hidden="true"></i>
                   <span>Conscious / Minimalist</span>
                   <small>Mainly secondhand, repair products, zero fast-fashion</small>
                 </div>
@@ -237,10 +238,11 @@
 
           <!-- Navigation Buttons -->
           <div class="quiz-navigation">
-            <button type="button" id="prev-btn" class="btn btn-secondary disabled" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Back</button>
-            <button type="button" id="next-btn" class="btn btn-primary" onclick="nextStep()">Next <i class="fa-solid fa-arrow-right"></i></button>
-            <button type="button" id="submit-btn" class="btn btn-primary btn-glowing hide" onclick="submitOnboarding()">Calculate Impact <i class="fa-solid fa-square-poll-vertical"></i></button>
+            <button type="button" id="prev-btn" class="btn btn-secondary disabled" onclick="prevStep()"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</button>
+            <button type="button" id="next-btn" class="btn btn-primary" onclick="nextStep()">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            <button type="button" id="submit-btn" class="btn btn-primary btn-glowing hide" onclick="submitOnboarding()">Calculate Impact <i class="fa-solid fa-square-poll-vertical" aria-hidden="true"></i></button>
           </div>
+
 
         </form>
       </div>
@@ -283,7 +285,8 @@
             
             <div class="gauge-container">
               <!-- SVG Radial Gauge -->
-              <svg viewBox="0 0 200 200" class="gauge-svg">
+              <svg viewBox="0 0 200 200" class="gauge-svg" role="img" aria-label="EcoPulse Carbon Score Gauge">
+                <title>EcoPulse Carbon Score Gauge</title>
                 <!-- Background track -->
                 <circle cx="100" cy="100" r="80" class="gauge-track"></circle>
                 <!-- Glowing foreground bar -->
@@ -507,7 +510,8 @@
         
         <div class="chart-container">
           <!-- Custom Vector SVG Chart for maximum responsiveness and high-fidelity -->
-          <svg viewBox="0 0 800 250" class="trend-chart-svg" id="trend-chart">
+          <svg viewBox="0 0 800 250" class="trend-chart-svg" id="trend-chart" role="img" aria-label="7-Day Carbon Footprint Trend Comparison Chart">
+            <title>7-Day Carbon Footprint Trend Comparison Chart</title>
             <!-- Grid Lines -->
             <line x1="50" y1="200" x2="750" y2="200" class="chart-grid-line"></line>
             <line x1="50" y1="140" x2="750" y2="140" class="chart-grid-line"></line>
